@@ -1,0 +1,46 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'cassaFrontendApp' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for cassa
+  platform :ios, '9.0'
+  pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+  pod 'React', :path => '../node_modules/react-native', :subspecs => [
+    'RCTImage'
+  ]
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+  
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
+  pod 'react-native-fetch-blob', :path => '../node_modules/react-native-fetch-blob'
+
+  pod 'react-native-pdf', :path => '../node_modules/react-native-pdf'
+
+  pod 'react-native-mail', :path => '../node_modules/react-native-mail'
+
+  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
+
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
+  pod 'RNFirebase' , :path => '../node_modules/react-native-firebase/ios'
+  pod 'RNShare', :path => '../node_modules/react-native-share'
+
+
+
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      if target.name == "React"
+        target.remove_from_project
+      end
+    end
+  end
+  target 'cassaFrontendAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
